@@ -68,7 +68,6 @@ export const fetchTickets = () => {
 };
 
 export const fetchTicketsIfNeeded = () => {
-  console.log(API_URL, process.env);
   return async (dispatch, getState) => {
     const { tickets } = getState().support;
     if (tickets.length === 0) {
