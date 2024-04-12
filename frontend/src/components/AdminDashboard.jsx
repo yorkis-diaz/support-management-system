@@ -53,7 +53,7 @@ const AdminDashboardComponent = () => {
       <div className='dashboard-container'>
         <h2 className='dashboard-title'>Admin Dashboard</h2>
         <button onClick={handleRefresh}>Refresh</button>
-        {isLoading && <p>Loading...</p>}
+        {isLoading && tickets.length > 0 && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}
         {tickets.length === 0 ? (
           <p>No tickets available</p>
