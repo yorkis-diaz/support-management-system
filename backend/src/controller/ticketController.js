@@ -39,6 +39,7 @@ exports.createTicket = async (req, res) => {
 
 exports.getAllTickets = async (req, res) => {
     try {
+        console.log('are we here?', client)
         await client.connect();
         console.log('Connected to MongoDB');
 
