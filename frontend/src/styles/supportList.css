@@ -1,0 +1,39 @@
+.support-list-container {
+    margin-top: 20px;
+}
+  
+.support-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+  
+.support-table th, .support-table td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+}
+  
+.support-table th {
+    background-color: #f2f2f2;
+}
+  
+.support-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+  
+.support-table tr:hover {
+    background-color: #ddd;
+}
+
+.support-status-dropdown {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    cursor: pointer;
+}
+  
+.support-status-dropdown:hover {
+    background-color: #f2f2f2;
+}
+  
