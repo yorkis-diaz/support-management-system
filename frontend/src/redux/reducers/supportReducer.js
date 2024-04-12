@@ -22,7 +22,7 @@ const supportReducer = (state = initialState, action) => {
     case CREATE_SUPPORT_REQUEST: 
       return {
         ...state,
-        isLoading: false
+        isLoading: true
       }
     case CREATE_SUPPORT_SUCCESS:
       return {
