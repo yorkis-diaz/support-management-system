@@ -1,7 +1,6 @@
 const API_URL = process.env.REACT_APP_API_URL;
 
 // Action Types
-export const ADD_SUPPORT = 'ADD_SUPPORT';
 export const CREATE_SUPPORT_SUCCESS = 'CREATE_SUPPORT_SUCCESS';
 export const CREATE_SUPPORT_FAILURE = 'CREATE_SUPPORT_FAILURE';
 export const UPDATE_SUPPORT_STATUS_SUCCESS = 'UPDATE_SUPPORT_STATUS_SUCCESS';
@@ -69,6 +68,7 @@ export const fetchTickets = () => {
 };
 
 export const fetchTicketsIfNeeded = () => {
+  console.log(API_URL, process.env);
   return async (dispatch, getState) => {
     const { tickets } = getState().support;
     if (tickets.length === 0) {
