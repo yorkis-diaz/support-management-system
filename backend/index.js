@@ -1,3 +1,4 @@
+require('dotenv').config();
 const app = require('./src/app');
 
 // Start the server
