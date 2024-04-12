@@ -6,7 +6,9 @@ const { connectToMongoDB } = require('./db');
 const app = express();
 const cors = require('cors');
   
-app.use(cors());
+app.use(cors({
+    origin: process.env.ALLOWED_ORIGIN
+}));
 
 app.use(bodyParser.json());
 
