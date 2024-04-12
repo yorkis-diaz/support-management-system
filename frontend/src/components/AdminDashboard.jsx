@@ -39,7 +39,7 @@ const AdminDashboardComponent = () => {
       if (!isLoading) {
         dispatch(fetchTicketsIfNeeded());
       }
-    }, []);
+    }, [isLoading]);
 
     const handleRefresh = () => {
       dispatch(fetchTickets());

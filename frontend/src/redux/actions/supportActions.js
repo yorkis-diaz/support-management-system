@@ -12,10 +12,6 @@ export const DELETE_SUPPORT_SUCCESS = 'DELETE_SUPPORT_SUCCESS';
 export const DELETE_SUPPORT_FAIL = 'DELETE_SUPPORT_FAIL';
 export const CREATE_SUPPORT_REQUEST = 'CREATE_SUPPORT_REQUEST';
 
-const createSupportRequest = () => ({
-  type: CREATE_SUPPORT_REQUEST,
-});
-
 export const createSupportSuccess = (ticket) => ({
   type: CREATE_SUPPORT_SUCCESS,
   payload: ticket,
@@ -97,7 +93,7 @@ export const fetchTicketsIfNeeded = () => {
 
 export const createSupport = (ticketData) => {
   return async (dispatch) => {
-      dispatch(createSupportRequest());
+      dispatch({ type: CREATE_SUPPORT_REQUEST });
 
       try {
         const response = await fetch(`${API_URL}/tickets`, {
