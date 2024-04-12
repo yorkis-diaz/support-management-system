@@ -36,8 +36,10 @@ const AdminDashboardComponent = () => {
 
 
     useEffect(() => {
-      dispatch(fetchTicketsIfNeeded());
-    }, []);
+      if (!isLoading) {
+        dispatch(fetchTicketsIfNeeded());
+      }
+    }, [isLoading, dispatch]);
 
     const handleRefresh = () => {
       dispatch(fetchTickets());
