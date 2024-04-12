@@ -3,6 +3,7 @@ import {
   CREATE_SUPPORT_FAILURE,
   UPDATE_SUPPORT_STATUS_SUCCESS,
   UPDATE_SUPPORT_STATUS_FAILURE,
+  FETCH_TICKETS_REQUEST,
   FETCH_TICKETS_SUCCESS,
   FETCH_TICKETS_FAILURE,
   DELETE_SUPPORT_SUCCESS,
@@ -12,6 +13,7 @@ import {
 const initialState = {
   tickets: [],
   error: null,
+  isLoading: false
 };
 
 const supportReducer = (state = initialState, action) => {
@@ -42,16 +44,23 @@ const supportReducer = (state = initialState, action) => {
         ...state,
         error: action.payload,
       };
+    case FETCH_TICKETS_REQUEST:
+      return {
+        ...state,
+        isLoading: true
+      }
     case FETCH_TICKETS_SUCCESS:
       return {
         ...state,
         tickets: [...action.payload],
         error: null,
+        isLoading: false
       };
     case FETCH_TICKETS_FAILURE:
       return {
         ...state,
         error: action.payload,
+        isLoading: false
       };
     case DELETE_SUPPORT_SUCCESS:
       return {

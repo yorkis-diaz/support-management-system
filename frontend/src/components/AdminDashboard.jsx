@@ -8,7 +8,7 @@ import SupportList from './SupportList';
 
 const AdminDashboardComponent = () => {
     const dispatch = useDispatch();
-    const { tickets, error } = useSelector((state) => state.support);
+    const { tickets, isLoading, error } = useSelector((state) => state.support);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
 
@@ -37,7 +37,7 @@ const AdminDashboardComponent = () => {
 
     useEffect(() => {
       dispatch(fetchTicketsIfNeeded());
-    });
+    }, []);
 
     const handleRefresh = () => {
       dispatch(fetchTickets());
@@ -51,14 +51,22 @@ const AdminDashboardComponent = () => {
       <div className='dashboard-container'>
         <h2 className='dashboard-title'>Admin Dashboard</h2>
         <button onClick={handleRefresh}>Refresh</button>
-        <SupportList tickets={displayedTickets}/>
-        <div className='pagination'>
-          <button onClick={prevPage} disabled={currentPage === 1}>Previous</button>
-          {Array.from({ length: totalPages }, (_, index) => (
-              <button key={index} onClick={() => goToPage(index + 1)}>{index + 1}</button>
-          ))}
-          <button onClick={nextPage} disabled={currentPage === totalPages}>Next</button>
-        </div>
+        {isLoading && <p>Loading...</p>}
+        {error && <p>Error: {error}</p>}
+        {tickets.length === 0 ? (
+          <p>No tickets available</p>
+        ) : (
+          <React.Fragment>
+            <SupportList tickets={displayedTickets} />
+            <div className='pagination'>
+              <button onClick={prevPage} disabled={currentPage === 1}>Previous</button>
+              {Array.from({ length: totalPages }, (_, index) => (
+                  <button key={index} onClick={() => goToPage(index + 1)}>{index + 1}</button>
+              ))}
+              <button onClick={nextPage} disabled={currentPage === totalPages}>Next</button>
+            </div>
+          </React.Fragment>
+        )}
     </div>
     );
 }

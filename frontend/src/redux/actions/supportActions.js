@@ -5,6 +5,7 @@ export const CREATE_SUPPORT_SUCCESS = 'CREATE_SUPPORT_SUCCESS';
 export const CREATE_SUPPORT_FAILURE = 'CREATE_SUPPORT_FAILURE';
 export const UPDATE_SUPPORT_STATUS_SUCCESS = 'UPDATE_SUPPORT_STATUS_SUCCESS';
 export const UPDATE_SUPPORT_STATUS_FAILURE = 'UPDATE_SUPPORT_STATUS_FAILURE';
+export const FETCH_TICKETS_REQUEST = 'FETCH_TICKETS_REQUEST';
 export const FETCH_TICKETS_SUCCESS = 'FETCH_TICKETS_SUCCESS';
 export const FETCH_TICKETS_FAILURE = 'FETCH_TICKETS_FAILURE';
 export const DELETE_SUPPORT_SUCCESS = 'DELETE_SUPPORT_SUCCESS'
@@ -54,6 +55,8 @@ export const deleteSupportFailure = (error) => ({
 // API Call Actions
 export const fetchTickets = () => {
   return async (dispatch) => {
+    dispatch({ type: FETCH_TICKETS_REQUEST });
+
     try {
       const response = await fetch(`${API_URL}/tickets`);
       if (!response.ok) {
@@ -69,6 +72,8 @@ export const fetchTickets = () => {
 
 export const fetchTicketsIfNeeded = () => {
   return async (dispatch, getState) => {
+    dispatch({ type: FETCH_TICKETS_REQUEST });
+
     const { tickets } = getState().support;
     if (tickets.length === 0) {
       try {
