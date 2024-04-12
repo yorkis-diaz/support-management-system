@@ -1,5 +1,6 @@
 .support-list-container {
     margin-top: 20px;
+    overflow-x: auto;
 }
   
 .support-table {
@@ -15,6 +16,14 @@
   
 .support-table th {
     background-color: #f2f2f2;
+}
+
+.support-table td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
   
 .support-table tr:nth-child(even) {
@@ -36,4 +45,3 @@
 .support-status-dropdown:hover {
     background-color: #f2f2f2;
 }
-  
