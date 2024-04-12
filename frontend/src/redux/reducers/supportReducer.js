@@ -22,12 +22,14 @@ const supportReducer = (state = initialState, action) => {
       return {
         ...state,
         tickets: [...state.tickets, action.payload],
-        error: null
+        error: null,
+        isLoading: false
       };
     case CREATE_SUPPORT_FAILURE:
       return {
         ...state,
-        error: action.payload
+        error: action.payload,
+        isLoading: false
       };
     case UPDATE_SUPPORT_STATUS_SUCCESS:
       return {
@@ -38,11 +40,13 @@ const supportReducer = (state = initialState, action) => {
             : ticket
         ),
         error: null,
+        isLoading: false
       };
     case UPDATE_SUPPORT_STATUS_FAILURE:
       return {
         ...state,
         error: action.payload,
+        isLoading: false
       };
     case FETCH_TICKETS_REQUEST:
       return {
@@ -66,12 +70,14 @@ const supportReducer = (state = initialState, action) => {
       return {
         ...state,
         tickets: state.tickets.filter((ticket) => ticket.id !== action.payload),
-        error: null
+        error: null,
+        isLoading: false
       };
     case DELETE_SUPPORT_FAIL:
       return {
         ...state,
         error: action.payload,
+        isLoading: false
       };
     default:
       return state;
