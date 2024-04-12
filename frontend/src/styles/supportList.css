@@ -2,7 +2,18 @@
     margin-top: 20px;
     overflow-x: auto;
 }
-  
+
+.send-email-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
 .support-table {
     width: 100%;
     border-collapse: collapse;
