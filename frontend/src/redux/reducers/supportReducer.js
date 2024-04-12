@@ -1,4 +1,5 @@
 import {
+  CREATE_SUPPORT_REQUEST,
   CREATE_SUPPORT_SUCCESS,
   CREATE_SUPPORT_FAILURE,
   UPDATE_SUPPORT_STATUS_SUCCESS,
@@ -18,6 +19,11 @@ const initialState = {
 
 const supportReducer = (state = initialState, action) => {
   switch (action.type) {
+    case CREATE_SUPPORT_REQUEST: 
+      return {
+        ...state,
+        isLoading: false
+      }
     case CREATE_SUPPORT_SUCCESS:
       return {
         ...state,

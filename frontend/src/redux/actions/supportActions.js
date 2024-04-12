@@ -8,8 +8,13 @@ export const UPDATE_SUPPORT_STATUS_FAILURE = 'UPDATE_SUPPORT_STATUS_FAILURE';
 export const FETCH_TICKETS_REQUEST = 'FETCH_TICKETS_REQUEST';
 export const FETCH_TICKETS_SUCCESS = 'FETCH_TICKETS_SUCCESS';
 export const FETCH_TICKETS_FAILURE = 'FETCH_TICKETS_FAILURE';
-export const DELETE_SUPPORT_SUCCESS = 'DELETE_SUPPORT_SUCCESS'
-export const DELETE_SUPPORT_FAIL = 'DELETE_SUPPORT_FAIL'
+export const DELETE_SUPPORT_SUCCESS = 'DELETE_SUPPORT_SUCCESS';
+export const DELETE_SUPPORT_FAIL = 'DELETE_SUPPORT_FAIL';
+export const CREATE_SUPPORT_REQUEST = 'CREATE_SUPPORT_REQUEST';
+
+const createSupportRequest = () => ({
+  type: CREATE_SUPPORT_REQUEST,
+});
 
 export const createSupportSuccess = (ticket) => ({
   type: CREATE_SUPPORT_SUCCESS,
@@ -92,6 +97,8 @@ export const fetchTicketsIfNeeded = () => {
 
 export const createSupport = (ticketData) => {
   return async (dispatch) => {
+      dispatch(createSupportRequest());
+
       try {
         const response = await fetch(`${API_URL}/tickets`, {
           method: 'POST',
