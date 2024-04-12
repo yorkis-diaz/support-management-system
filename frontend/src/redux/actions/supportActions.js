@@ -69,11 +69,12 @@ export const fetchTickets = () => {
 };
 
 export const fetchTicketsIfNeeded = () => {
+  console.log(API_URL, process.env);
   return async (dispatch, getState) => {
     const { tickets } = getState().support;
     if (tickets.length === 0) {
       try {
-        const response = await fetch(`${API_URL}/tickets`);
+        const response = {}//await fetch(`${API_URL}/tickets`);
         if (!response.ok) {
           throw new Error('Failed to fetch tickets');
         }
